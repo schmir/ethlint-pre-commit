@@ -1,0 +1,17 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src"]
+
+ :dependencies
+ []
+
+ :builds
+ {:script {:id :script
+           :target :node-script
+           :main ethlint-pre-commit.core/-main
+           :js-options {:js-provider :require
+                        ;; :keep-native-requires true
+                        ;; :keep-as-require #{"fsevents"}
+                        }
+           :compiler-options {:infer-externs :auto}
+           :output-to "bin/ethlint-pre-commit.js"}}}

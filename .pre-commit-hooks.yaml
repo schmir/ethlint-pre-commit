@@ -1,0 +1,7 @@
+- id: ethlint
+  name: Run ethlint
+  description: This runs the ethlint solidity linter
+  entry: ethlint-pre-commit
+  args: []
+  language: node
+  types: [solidity]
