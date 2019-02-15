@@ -12,7 +12,7 @@
         "ethlint-pre-commit": "bin/ethlint-pre-commit.js"
     },
     "scripts": {
-        "prepublish": "npx shadow-cljs release script",
-        "preinstall": "npx shadow-cljs release script"
+        "xxprepublish": "npx shadow-cljs release script",
+        "xxpreinstall": "npx shadow-cljs release script"
     }
 }
