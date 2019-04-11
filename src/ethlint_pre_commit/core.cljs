@@ -76,7 +76,7 @@
 
 
 (def cli-options
-  [["-c" "--config CONFIG" "path to .soliumrc file" :default ".soliumrc"]
+  [["-c" "--config CONFIG" "path to .soliumrc.json file" :default ".soliumrc.json"]
    ["-h" "--help" "show help"]])
 
 
