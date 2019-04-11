@@ -17,7 +17,10 @@
 
 (defn read-soliumrc
   [filename]
-  (js->clj (js/require filename)))
+  (-> filename
+      slurp
+      js/JSON.parse
+      (js->clj :keywordize-keys true)))
 
 
 (defn report-errors
