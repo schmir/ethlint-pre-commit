@@ -17,7 +17,10 @@
 
 (defn read-soliumrc
   [filename]
-  (js->clj (js/require filename)))
+  (-> filename
+      slurp
+      js/JSON.parse
+      (js->clj :keywordize-keys true)))
 
 
 (defn report-errors
@@ -73,7 +76,7 @@
 
 
 (def cli-options
-  [["-c" "--config CONFIG" "path to .soliumrc file" :default ".soliumrc"]
+  [["-c" "--config CONFIG" "path to .soliumrc.json file" :default ".soliumrc.json"]
    ["-h" "--help" "show help"]])
 
 
