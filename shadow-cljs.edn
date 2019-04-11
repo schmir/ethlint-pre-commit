@@ -3,7 +3,8 @@
  ["src"]
 
  :dependencies
- [[org.clojure/tools.cli "0.4.1"]]
+ [[org.clojure/tools.cli "0.4.2"]
+  [cljs-node-io "1.1.2"]]
 
  :builds
  {:script {:id :script
