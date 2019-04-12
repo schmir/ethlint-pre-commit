@@ -15,8 +15,46 @@ jobs:
           command: |
             npx shadow-cljs release script
 
+  build-compiled:
+    docker:
+      - image: circleci/openjdk:11-jdk-node
+    steps:
+      - checkout
+      - run:
+          name: set git identity
+          command: |
+            git config --global user.name "automatic circleci build"
+            git config --global user.email "circleci"
+      - run:
+          name: switch to compiled branch
+          command: |
+            git checkout compiled
+      - run:
+          name: merge with master
+          command: |
+            git merge --no-commit master
+      - run:
+          name: npm install
+          command: |
+            npm install
+      - run:
+          name: build script
+          command: |
+            npx shadow-cljs release script
+
+      - run:
+          name: git add script
+          command: |
+            git add bin/ethlint-pre-commit.js
+
+      - run:
+          name: git commit
+          command: |
+            git commit -m 'merge with master'
+
 workflows:
   version: 2
   default:
     jobs:
       - build
+      - build-compiled
