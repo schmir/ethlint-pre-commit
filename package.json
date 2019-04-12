@@ -3,7 +3,7 @@
     "version": "0.2.0",
     "private": false,
     "devDependencies": {
-        "shadow-cljs": "2.7.35"
+        "shadow-cljs": "2.8.31"
     },
     "dependencies": {
         "ethlint": "^1.2.4"
