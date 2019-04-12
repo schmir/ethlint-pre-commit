@@ -51,6 +51,11 @@ jobs:
           name: git commit
           command: |
             git commit -m 'merge with master'
+      - run:
+          name: push to github
+          command: |
+            git push origin HEAD:wip-compiled
+
 
 workflows:
   version: 2
