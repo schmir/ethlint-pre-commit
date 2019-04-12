@@ -51,6 +51,11 @@ jobs:
           name: git commit
           command: |
             git commit -m 'merge with master'
+
+      - add_ssh_keys:
+          fingerprints:
+            - "90:82:90:e3:83:68:fd:78:ab:ad:61:81:95:7b:86:e8"
+
       - run:
           name: push to github
           command: |
