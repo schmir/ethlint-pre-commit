@@ -19,6 +19,9 @@ jobs:
     docker:
       - image: circleci/openjdk:11-jdk-node
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "4e:ea:f0:6b:c1:36:fb:c4:5c:91:f3:1f:ff:07:99:b9"
       - checkout
       - run:
           name: set git identity
@@ -52,10 +55,6 @@ jobs:
           command: |
             git commit -m 'merge with master'
 
-      - add_ssh_keys:
-          fingerprints:
-            - "4e:ea:f0:6b:c1:36:fb:c4:5c:91:f3:1f:ff:07:99:b9"
-
       - run:
           name: push to github
           command: |
@@ -66,5 +65,4 @@ workflows:
   version: 2
   default:
     jobs:
-      - build
       - build-compiled
