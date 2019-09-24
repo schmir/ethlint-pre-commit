@@ -6,7 +6,7 @@
         "shadow-cljs": "2.7.35"
     },
     "dependencies": {
-        "ethlint": "^1.2.4"
+        "ethlint": "^1.2.5"
     },
     "bin": {
         "ethlint-pre-commit": "bin/ethlint-pre-commit.js"
