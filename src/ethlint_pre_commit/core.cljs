@@ -19,8 +19,7 @@
   [filename]
   (-> filename
       slurp
-      js/JSON.parse
-      (js->clj :keywordize-keys true)))
+      js/JSON.parse))
 
 
 (defn report-errors
@@ -31,8 +30,7 @@
 (defn lint-source-code
   [user-config source-code]
   (try
-    (js->clj (solium/lint source-code
-                          (clj->js user-config))
+    (js->clj (solium/lint source-code user-config)
              :keywordize-keys true)
     (catch js/Error err
       (if (= "SyntaxError" (.-name err) )
