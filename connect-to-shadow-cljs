@@ -1,0 +1,5 @@
+#! /bin/sh
+
+# Use this to connect node to the shadow-cljs server for use with a REPL
+
+exec /usr/bin/env ETHLINT_SHADOW_CLJS=1 node bin/ethlint-pre-commit.js
