@@ -80,20 +80,23 @@
 
 (defn -main
   [& args]
-  (let [{:keys [options arguments summary errors]} (parse-opts args cli-options)]
-    (try
-      (cond
-        (:help options)
-          (do
-            (show-usage summary)
-            (exit 0))
-        :else
-          (exit (if (zero? (run-solium options arguments))
-                  0
-                  1)))
-      (catch :default err
-        (println "internal error" err))
-      (finally
-        (exit 1)))))
+  (if (aget js/process.env "ETHLINT_SHADOW_CLJS")
+    (do
+      (println "Starting app in shadow-cljs mode"))
+    (let [{:keys [options arguments summary errors]} (parse-opts args cli-options)]
+      (try
+        (cond
+          (:help options)
+            (do
+              (show-usage summary)
+              (exit 0))
+          :else
+            (exit (if (zero? (run-solium options arguments))
+                    0
+                    1)))
+        (catch :default err
+          (println "internal error" err))
+        (finally
+          (exit 1))))))
 
 (set! *main-cli-fn* -main)
